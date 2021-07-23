@@ -1,21 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import MainLayout from '@components/_layouts/MainLayout';
-import { useLayout } from '@core/contexts';
-import Link from '@components/_shared/Link';
+import axios from 'axios';
  
 const Index = (): JSX.Element => {
-	const { setMainAlert } = useLayout(); //sample custom hooks context
-
-	useEffect(() => {
-		setMainAlert({type: 'success', message: 'hahah sukses'});
-		// sample use of setMainAlert()
-	}, []);
+	const [inputan, setInputan] = useState('');
+	
+	const handleSubmit = e => {
+		e.preventDefault();
+		
+		axios.post('/api/coba-submit', {
+			nama: inputan
+		})
+			.then(res => console.log(res.data));
+	};
 
 	return (
 		<MainLayout title="Home" className="flex-sc col">
-			<h1 className="mb-4">Helo world</h1>
-			<Link href="/about" className="px-4 py-2 text-white bg-blue-400" zoomed>TO ABOUT</Link>
-			{/* SAMPLE USE OF CUSTOM <Link> */}
+			<form onSubmit={handleSubmit}>
+				<input 
+					value={inputan}
+					onChange={e => setInputan(e.target.value)}
+					type="text"
+					name="nama" 
+					id="" 
+					className="bg-gray-200"
+				/>
+				<button type="submit" className="btn-main">SUBMITT</button>
+			</form>
 		</MainLayout>
 	);
 };
