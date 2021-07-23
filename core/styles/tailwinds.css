@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.btn-main {
+		@apply cursor-pointer px-6 py-3 text-white bg-primary hover:bg-opacity-80;
+	}
+	.btn-bordered {
+		@apply cursor-pointer px-6 py-3 text-primary border border-primary bg-primary bg-opacity-0 hover:bg-opacity-10;
+	}
+
+	button[value='loading'] {
+		@apply flex-cc;
+	}
+	button[value='loading'] i.spinner {
+		@apply inline-flex ml-4;
+	}
+
+	i.spinner {
+		display: none;
+		width: 16px;
+		height: 16px;
+		border: 3px solid;
+		border-color: #000 #0005 #000 #0005;
+		border-radius: 50%;
+		animation: spin 1.2s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+@layer utilities {
+	.flex-cc {
+		@apply flex justify-center items-center;
+	}
+	.flex-cs {
+		@apply flex justify-center items-start;
+	}
+	.flex-ce {
+		@apply flex justify-center items-end;
+	}
+	.flex-sc {
+		@apply flex justify-start items-center;
+	}
+	.flex-ss {
+		@apply flex justify-start items-start;
+	}
+	.flex-ec {
+		@apply flex justify-end items-center;
+	}
+	.flex-vc {
+		@apply flex justify-evenly items-center;
+	}
+	.flex-bc {
+		@apply flex justify-between items-center;
+	}
+	.flex-bs {
+		@apply flex justify-between items-start;
+	}
+	.flex-be {
+		@apply flex justify-between items-end;
+	}
+	.col {
+		@apply flex-col;
+	}
+
+	.full {
+		@apply w-full h-full;
+	}
+	.fullscreen {
+		@apply fixed full inset-0;
+	}
+	.stroked {
+		-webkit-text-stroke: 0.2px;
+	}
+}
+
+@layer base {
+	* {
+		@apply box-border;
+	}
+
+	html,
+	body {
+		@apply m-0 p-0 bg-white font-main text-black;
+	}
+
+	a {
+		color: inherit;
+		@apply no-underline;
+	}
+
+	button {
+		@apply cursor-pointer focus:outline-none;
+	}
+
+	input {
+		@apply focus:outline-none bg-white text-black;
+	}
+}
