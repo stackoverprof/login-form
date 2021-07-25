@@ -12,6 +12,8 @@ const Index = (): JSX.Element => {
 			nama: inputan
 		})
 			.then(res => console.log(res.data));
+		
+			.catch(err => console.log(err.response.data.message));
 	};
 
 	return (
